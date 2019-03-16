@@ -1,0 +1,11 @@
+vlsr: local standard rest speed. Fixed. 8 km / s
+
+numsigma: minimum intensity for a channel not to be considered as noise. Default 5.0. Lower values better for lower sound / noise ratio
+
+minchan: minimum number of consecutive channels above numsigma to consider them parts of a molecular line. Default 4. Depends on width of line in the spectra
+
+smooth: whether the input spectra is smoothed. Uses multiple algorithms. Default: not smooth. Very noisy spectra may require smoothing for more accurate identifications
+
+maxgap: opposite of minchan
+
+parameters of concern: numsigma, minchan, maxgap
