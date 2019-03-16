@@ -34,7 +34,7 @@ def parseChannels():
     print(result)
     return result
 
-parseFreq()
-parseChannels()
-parsePeakIntensity()
-#print(lines["linetable"]["lines"])
+def test():
+    parseFreq()
+    parseChannels()
+    parsePeakIntensity()
