@@ -20,6 +20,5 @@ def getExpectedPeaks():
     return result
 
 
-
 getExpectedNumPeaks()
 getExpectedPeaks()

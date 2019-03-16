@@ -1,0 +1,9 @@
+{"taskid":4, "naxis3":355,
+    "linetable":{
+    "columns":["frequency", "uid", "formula", "name", "transition", "velocity", "El", "Eu", "linestrength", "peakintensity", "peakoffset", "fwhm", "startchan", "endchan", "peakrms", "blend", "force"],
+    "units":["GHz", "", "", "", "", "km/s", "K", "K", "D^2", "Jy/beam", "km/s", "km/s", "", "", "", "", ""],
+    "lines":[{"frequency":"337.009557597","uid":"U_337.0096","formula":"U_337.0096","name":"Unknown","transition":"","velocity":"8.0","El":"0.0","Eu":"0.0","linestrength":"0.0","peakintensity":"-0.00050375785213","peakoffset":"0.0","fwhm":"0.502132844611","startchan":"2","endchan":"6","peakrms":"-0.123848298562","blend":"0","force":"False"} ,
+    {"frequency":"337.012097708","uid":"U_337.0121","formula":"U_337.0121","name":"Unknown","transition":"","velocity":"8.0","El":"0.0","Eu":"0.0","linestrength":"0.0","peakintensity":"-0.00050375785213","peakoffset":"0.0","fwhm":"1.76980576908","startchan":"2","endchan":"12","peakrms":"-0.123848298562","blend":"0","force":"False"} ,
+    {"frequency":"337.0611","uid":"C17O_337.06110","formula":"C17O","name":"Carbon Monoxide","transition":"J=3-2","velocity":"6.83959422465","El":"16.1775093079","Eu":"32.3538017273","linestrength":"0.0365099981427","peakintensity":"18.0318103935","peakoffset":"-1.16040577535","fwhm":"913.975647443","startchan":"25","endchan":"336","peakrms":"11.7133803012","blend":"0","force":"False"} ]
+    }
+    }
