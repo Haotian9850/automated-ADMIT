@@ -10,15 +10,16 @@ import numpy as np
 
 def findAllCombinations():
     result = []
-    for numsigma in np.arange(3.0, 6.0, 1.0):
-        for minchan in range(1, 5):
-            for maxchan in range(10, 20):
+    for numsigma in np.arange(3.0, 5.0, 1.0):
+        for minchan in range(1, 2):
+            for maxchan in range(10, 12):
                 newParamSet = ()
                 if(minchan < maxchan):
                     newParamSet = (numsigma, minchan, maxchan)
                     result.append(newParamSet)
-    #print(len(result))
+    print(len(result))
     #print(result)
+    #print(type(result[0][0]))
     return result
 
 def splitInto5():
@@ -33,5 +34,5 @@ def splitInto5():
     #print(result)
     return result
 
-#findAllCombinations()
+findAllCombinations()
 #splitInto5()
