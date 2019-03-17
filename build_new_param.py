@@ -17,8 +17,8 @@ def findAllCombinations():
                 if(minchan < maxchan):
                     newParamSet = (numsigma, minchan, maxchan)
                     result.append(newParamSet)
-    print(len(result))
-    print(result)
+    #print(len(result))
+    #print(result)
     return result
 
 def splitInto5():
@@ -29,9 +29,9 @@ def splitInto5():
         for j in range(i, i + 5):
             group.append(temp[j])
         result.append(group)
-    print(len(result))
-    print(result)
+    #print(len(result))
+    #print(result)
     return result
 
-findAllCombinations()
-splitInto5()
+#findAllCombinations()
+#splitInto5()
