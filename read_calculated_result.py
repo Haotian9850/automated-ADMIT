@@ -38,3 +38,5 @@ def test():
     parseFreq()
     parseChannels()
     parsePeakIntensity()
+
+test()
