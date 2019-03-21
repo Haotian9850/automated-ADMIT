@@ -7,27 +7,20 @@
 #maxchan: 5 - 40, increment 1
 
 import numpy as np
+from Main import numsigmaRange, minchanRange, maxchanRange
 
-def findAllCombinations():
+numsigmaRange = numsigmaRange
+minchanRange = minchanRange
+maxchanRange = maxchanRange
+
+def findAllCombinations(numsigmaRange, minchanRange, maxchanRange):
     result = []
-    for numsigma in np.arange(3.0, 5.0, 1.0):
-        for minchan in range(1, 2):
-            for maxchan in range(10, 12):
+    for numsigma in np.arange(numsigmaRange[0], numsigmaRange[1], 1.0):
+        for minchan in range(minchanRange[0], minchanRange[1]):
+            for maxchan in range(maxchanRange[0], maxchanRange[1]):
                 newParamSet = ()
                 if(minchan < maxchan):
                     newParamSet = (numsigma, minchan, maxchan)
                     result.append(newParamSet)
     print(len(result))
-    return result
-
-def splitInto5():
-    result = []
-    temp = findAllCombinations()
-    for i in range(0, len(temp), 5):
-        group = []
-        for j in range(i, i + 5):
-            group.append(temp[j])
-        result.append(group)
-    #print(len(result))
-    #print(result)
     return result

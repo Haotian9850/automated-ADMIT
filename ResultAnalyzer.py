@@ -1,13 +1,18 @@
 #!/usr/bin/python
-from ResultReader import parseFreq, parseChannels, parsePeakIntensity
+from ResultReader import getAllLineProfile, parseFreq, parseChannels, parsePeakIntensity
 from InputIngestor import getExpectedLineNum, getExpectedLines
+from Main import inputFile
+
+fileName = inputFile
 
 expectedLineNum = getExpectedLineNum()
 expectedLines = getExpectedLines()  #frequency range
 
-actualLines = parseFreq()   #frequency range
-actualLineChannels = parseChannels()
-actualLineNum = len(parseFreq())
+allResultLines = getAllLineProfile(fileName)
+
+actualLines = parseFreq(allResultLines)   #frequency range
+actualLineChannels = parseChannels(allResultLines)
+actualLineNum = len(parseFreq(allResultLines))
 
 diff = []
 
