@@ -51,9 +51,10 @@ def softCompareLists(list1, list2):
 
 
 #inputs are lists
+#method export
 def compare(expectedLines, actualLines):
     result = []
-    if checkNumOfLines(expectedNumLines and len(allActualLineChannels):
+    if checkNumOfLines(expectedLines, actualLines) and len(actualLines) != 0:
         #compare every line
         result = strictCompare()
     else:

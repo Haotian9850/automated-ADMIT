@@ -31,6 +31,3 @@ def splitInto5():
     #print(len(result))
     #print(result)
     return result
-
-findAllCombinations()
-#splitInto5()

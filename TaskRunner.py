@@ -1,8 +1,6 @@
 #!/usr/bin/env casarun
 import admit 
-
-from build_new_param import findAllCombinations
-
+from NewParamBuilder import findAllCombinations
 
 allParams = findAllCombinations()
 fileName = "../uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
@@ -24,12 +22,9 @@ def assemble(i, numsigma, minchan, maxchan):
         ), [t1, t3])
         return p
 
-
 def runAllProjects():
     for i in range(0, len(allParams), 1):
         newProject = assemble(i, allParams[i][0].item(), allParams[i][1], allParams[i][2])
         newProject.run()
-
-
 
 runAllProjects()    #will take some time...
