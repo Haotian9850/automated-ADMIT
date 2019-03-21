@@ -18,8 +18,6 @@ def findAllCombinations():
                     newParamSet = (numsigma, minchan, maxchan)
                     result.append(newParamSet)
     print(len(result))
-    #print(result)
-    #print(type(result[0][0]))
     return result
 
 def splitInto5():

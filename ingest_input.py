@@ -5,12 +5,14 @@ def readFile():
     paramFileLines = paramsFile.readlines()
     return paramFileLines
 
-def getExpectedNumPeaks():
+#number of expected molecular lines
+def getExpectedLineNum(): 
     lines = readFile()
     print(lines[0])
     return lines[0]
 
-def getExpectedPeaks():
+#frequency ranges of all expected molecular lines
+def getExpectedLines():
     result = []
     lines = readFile()
     for i in range(1, len(lines)):
