@@ -1,5 +1,5 @@
+#!/usr/bin/python
 import json
-
 def getAllLineProfile():
     with open('sample_result.json', 'r') as jsonFile:
         allResult = json.load(jsonFile)

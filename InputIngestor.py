@@ -1,12 +1,11 @@
 #!/usr/bin/python
-
 def readFile():
     paramsFile = open("input.txt")
     paramFileLines = paramsFile.readlines()
     return paramFileLines
 
 #number of expected molecular lines
-def getExpectedLineNum(): 
+def getExpectedLineNum():
     lines = readFile()
     print(lines[0])
     return lines[0]
@@ -20,7 +19,3 @@ def getExpectedLines():
         result.append((line[0], line[1][0:len(line[1]) - 1]))
     print(result)
     return result
-
-
-getExpectedNumPeaks()
-getExpectedPeaks()
