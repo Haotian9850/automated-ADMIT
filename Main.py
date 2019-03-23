@@ -92,8 +92,12 @@ def checkResults():
             min = temp
     return minIndex #here it goes!!!
 
-
-        
+def printResult():
+    """
+    Prints out best fit parameter combination
+    """
+    bestFitIndex = checkResults()
+    print("best fit parameters are: " + generateAllParams().index(bestFitIndex))
 
 def makeResultFolderNames():
     """
@@ -107,3 +111,9 @@ def makeResultFolderNames():
         folderName = 'Main.admit' + '_' + str(i)
         result.append(folderName)
     return result
+
+def run():
+    """
+    Master function, calls every functions to complete workflow
+    """
+    printResult()
