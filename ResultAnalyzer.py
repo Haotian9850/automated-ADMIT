@@ -1,23 +1,13 @@
 #!/usr/bin/python
-from ResultReader import getAllLineProfile, parseFreq, parseChannels, parsePeakIntensity
-from InputIngestor import getExpectedLineNum, getExpectedLines
-from Main import inputFile
 
-fileName = inputFile
-
-expectedLineNum = getExpectedLineNum()
-expectedLines = getExpectedLines()  #frequency range
-
-allResultLines = getAllLineProfile(fileName)
-
-actualLines = parseFreq(allResultLines)   #frequency range
-actualLineChannels = parseChannels(allResultLines)
-actualLineNum = len(parseFreq(allResultLines))
-
-diff = []
-
-#read and compare
 def checkNumOfLines(expectedLineNum, actualLineNum):
+    """
+    Args:
+        expectedLineNum: expected number of molecular lines (int)
+        actualLineNums: actual number of identified molecular lines (int, comes back from ADMIT task)
+    Returns"
+        Ture if inputs are equal in value, False otherwise
+    """
     if(expectedLineNum != actualLineNum):
         print("Expected number of molecular lines does not match ADMIT calculation, applying soft comparison...")
         return False
@@ -25,45 +15,70 @@ def checkNumOfLines(expectedLineNum, actualLineNum):
     return True
 
 def reduce(Rangelist):
+    """
+    Args:
+        Rangelist: generic list of tuples (can be either float or int tuple)
+    Return:
+        Reduced int list based on average value of every tuple in input tuple list
+    """
     result = []
     for i in range(0, len(Rangelist), 1):
         midVal = abs(Rangelist[i][0] + Rangelist[i][1]) / 2.0
         result.append(midVal)
     return result 
 
-def strictCompare():
-    expectedMidVal = reduce(expectedLines)
-    actualMidVal = reduce(actualLines)
+def strictCompare(expectedMidVal, actualMidVal):
+    """
+    Args:
+        expectedMidVal: reduced tuple list of expected molecular line ranges
+        actualMidVal: reduced tuple list of actual identified molecular line ranges
+    Returns:
+        A list of absolute differences between every element in two input lists
+    """
     result = []
     for i in range(0, len(expectedMidVal), 1):
         lineDiff = abs(expectedMidVal[i] - actualMidVal[i])
         result.append(lineDiff)
     return result
 
-def softCompare():
-    return softCompareLists(reduce(expectedLines), reduce(actualLines))
+def softCompare(list1, list2):
+    """
+    Caller function of softCompareLists()
+    """
+    return softCompareLists(list1, list2)
 
 def softCompareLists(list1, list2):
+    """
+    Args:
+        list1: int / float list
+        list2: int / float list
+    Returns:
+        A list of absolute differences between every element in two input lists based on soft comparison
+    """
     result = []
     #complete search
     for i in range(0, len(list1), 1):
         lineDiff = -1
         for j in range(0, len(list2), 1):
-            tempDiff = abs(list1[i] - list2[i])
+            tempDiff = abs(list1[i] - list2[j])
             lineDiff = min(lineDiff, tempDiff)
         result.append(lineDiff)
     return result
 
-
-#inputs are lists
-#method export
 def compare(expectedLines, actualLines):
+    """
+    Args:
+        expectedLines: expeced molecular lines (list of float tuples)
+        actualLines: actual identified molecular lines (list of float tuples)
+    Returns:
+        A list of absolute difference between every element in two input lists based on either soft or strict comparison
+    """
     result = []
     if checkNumOfLines(expectedLines, actualLines) and len(actualLines) != 0:
         #compare every line
-        result = strictCompare()
+        result = strictCompare(reduce(expectedLines), reduce(actualLines))
     else:
         #soft comparison
-        result = softCompare()
+        result = softCompare(reduce(expectedLines), reduce(actualLines))
     return result #final comparison result
 

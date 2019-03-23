@@ -1,11 +1,18 @@
 #!/usr/bin/env casarun
 import admit 
-from NewParamBuilder import findAllCombinations
 
-allParams = findAllCombinations()
-fileName = "../uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
 
-def assemble(i, numsigma, minchan, maxchan):
+def assemble(i, numsigma, minchan, maxchan, fileName):
+        """
+        Args:
+                i: task ID (used to associate parameter set with its task)
+                numsigma: param numsigma
+                minchan: param minchan
+                maxchan: param maxchan
+                fileName: input .fits file (String)
+        Returns:
+                assembed ADMIT task
+        """
         p = admit.Project('molecular-line.admit' + '_' + str(i), dataserver=True)
         t0  = p.addtask(admit.Ingest_AT(file=fileName))
         t1  = p.addtask(admit.CubeStats_AT(ppp=True), [t0])
@@ -22,9 +29,16 @@ def assemble(i, numsigma, minchan, maxchan):
         ), [t1, t3])
         return p
 
-def runAllProjects():
-    for i in range(0, len(allParams), 1):
-        newProject = assemble(i, allParams[i][0].item(), allParams[i][1], allParams[i][2])
-        newProject.run()
-
-runAllProjects()    #will take some time...
+def runAllProjects(allParams, fileName):
+        """
+        Calls assmble(), makes and then run all project built with all possible parameter combinations
+        Args:
+                allParams: a list of all possible executable parameter combinations (nested list)
+                fileName: input .fits file (String)
+                
+        Returns: 
+                NONE
+        """
+        for i in range(0, len(allParams), 1):
+                newProject = assemble(i, allParams[i][0].item(), allParams[i][1], allParams[i][2], fileName)
+                newProject.run()

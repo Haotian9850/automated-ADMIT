@@ -1,9 +1,6 @@
 import numpy as np
 from Main import numsigmaRange, minchanRange, maxchanRange
 
-numsigmaRange = numsigmaRange
-minchanRange = minchanRange
-maxchanRange = maxchanRange
 
 
 def findAllCombinations(numsigmaRange, minchanRange, maxchanRange):
@@ -13,7 +10,7 @@ def findAllCombinations(numsigmaRange, minchanRange, maxchanRange):
         minchanRange: range of minchan (integer range)
         maxchanRange: range of maxchan (integer range)
     Returns:
-        all possible executable parameter combinations (nested list)
+        a list of all possible executable parameter combinations (nested list)
     """
     result = []
     for numsigma in np.arange(numsigmaRange[0], numsigmaRange[1], 1.0):

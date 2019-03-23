@@ -1,8 +1,6 @@
 #!/usr/bin/python
 import json
-from Main import inputFile
 
-fileName = inputFile
 
 def getAllLineProfile(fileName):
     with open(fileName, 'r') as jsonFile:
