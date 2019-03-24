@@ -62,7 +62,7 @@ def softCompareLists(list1, list2):
         for j in range(0, len(list2), 1):
             tempDiff = abs(list1[i] - list2[j])
             lineDiff = min(lineDiff, tempDiff)
-        result.append(lineDiff)
+        result.append(lineDiff) #length of result will be length of list1 (expectde molecular line)
     return result
 
 def compare(expectedLines, actualLines):

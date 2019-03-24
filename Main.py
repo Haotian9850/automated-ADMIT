@@ -3,7 +3,7 @@ from ResultReader import getAllLineProfile, parseChannels, parseFreq
 from InputIngestor import getExpectedLineNum, getExpectedLines
 from TaskRunner import runAllProjects
 from ResultAnalyzer import compare
-from NewParamBuilder import findAllCombinations #is it really necessary?
+from NewParamBuilder import findAllCombinations
 
 #configs
 numsigmaRange = [2.0, 4.0]
@@ -57,7 +57,7 @@ def getExpectedMolecularLines():
     Returns:
         frequency ranges of all expected molecular lines (nested list)
     """
-    return getExpectedLines()
+    return getExpectedLines(inputFile)
 
 def getAllDiff():
     """
