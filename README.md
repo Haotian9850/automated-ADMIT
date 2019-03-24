@@ -16,3 +16,13 @@ The programs takes a <code>.txt</code> named <code>input.txt</code> as input. Th
 <code>318.77 318.89</code>
 <br/>
 <code>319.69 320.00</code>
+
+# Set parameter range
+Currently, the program supports user-defined range for <code>numsigma</code>, <code>minchan</code> and <code>maxchan</code>, presented as lists <code>numsigmaRange</code>, <code>minchanRange</code> and <code>maxchanRange</code> in <code>Main.py</code>. Changing the value of these lists will redefine parameter range. More parameters will be added in the future to allow for better customizability. 
+
+# Automate parameter finding process
+In CASA's iPython environment, run 
+<br/>
+<code>%run Main.py</code>
+<br/>
+The program will run all ADMIT tasks based on parameter range and then print out the best-fit parameter set in the console. 
