@@ -2,14 +2,14 @@
 import json
 
 
-def getAllLineProfile(fileName):
+def getAllLineProfile(pathToJson, fileName):
     """
     Args:
         fileName: name of input admit result file (String)
     Retuens:
         all information on all identified molecular lines (nested list)
     """
-    with open(fileName, 'r') as jsonFile:
+    with open(pathToJson + fileName, 'r') as jsonFile:
         allResult = json.load(jsonFile)
         lines = allResult["linetable"]["lines"]
     return lines

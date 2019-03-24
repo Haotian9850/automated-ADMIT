@@ -6,10 +6,10 @@ from ResultAnalyzer import compare
 from NewParamBuilder import findAllCombinations
 
 #configs
-numsigmaRange = [2.0, 4.0]
-minchanRange = [1, 3]
-maxchanRange = [4, 6]
-fileName = "../uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
+numsigmaRange = [2.0, 5.0]
+minchanRange = [1, 2]
+maxchanRange = [4, 5]
+fileName = "uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
 inputFile = "input.txt"
 
 
@@ -45,7 +45,7 @@ def getAllResult():
     result = []
     folders = makeResultFolderNames()
     for folder in folders:
-        lines = parseFreq(getAllLineProfile(folder))
+        lines = parseFreq(getAllLineProfile(folder, 'lltable.4.json'))
         result.append(lines)
     return result
 
@@ -69,7 +69,7 @@ def getAllDiff():
     result = []
     allBDPResults = getAllResult()
     for BDPResult in allBDPResults:
-        result.append(compare(getExpectedMolecularLines, BDPResult))
+        result.append(compare(getExpectedMolecularLines(), BDPResult))
     return result   #this is what we want! (index based)
 
 #what algorithm to use???
@@ -97,7 +97,7 @@ def printResult():
     Prints out best fit parameter combination
     """
     bestFitIndex = checkResults()
-    print("best fit parameters are: " + generateAllParams().index(bestFitIndex))
+    print(generateAllParams()[bestFitIndex])
 
 def makeResultFolderNames():
     """
@@ -108,7 +108,7 @@ def makeResultFolderNames():
     """
     result = []
     for i in range(0, len(generateAllParams())):
-        folderName = 'Main.admit' + '_' + str(i)
+        folderName = 'molecular-line.admit' + '_' + str(i) + '/'
         result.append(folderName)
     return result
 
@@ -117,3 +117,6 @@ def run():
     Master function, calls every functions to complete workflow
     """
     printResult()
+
+runAllTasks()
+run()

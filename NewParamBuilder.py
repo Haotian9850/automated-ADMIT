@@ -1,7 +1,4 @@
 import numpy as np
-from Main import numsigmaRange, minchanRange, maxchanRange
-
-
 
 def findAllCombinations(numsigmaRange, minchanRange, maxchanRange):
     """

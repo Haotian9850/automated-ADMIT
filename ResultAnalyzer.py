@@ -14,7 +14,7 @@ def checkNumOfLines(expectedLineNum, actualLineNum):
     print("Expected number of molecular lines matches ADMIT calculation, applying strict comparison...")
     return True
 
-def reduce(Rangelist):
+def reduce(l):
     """
     Args:
         Rangelist: generic list of tuples (can be either float or int tuple)
@@ -22,8 +22,8 @@ def reduce(Rangelist):
         Reduced int list based on average value of every tuple in input tuple list
     """
     result = []
-    for i in range(0, len(Rangelist), 1):
-        midVal = abs(Rangelist[i][0] + Rangelist[i][1]) / 2.0
+    for s in l:
+        midVal = abs(float(s[0]) - float(s[1])) / 2.0
         result.append(midVal)
     return result 
 
