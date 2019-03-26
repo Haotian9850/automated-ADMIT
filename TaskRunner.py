@@ -13,7 +13,7 @@ def assemble(i, numsigma, minchan, maxchan, fileName):
         Returns:
                 assembed ADMIT task
         """
-        p = admit.Project('molecular-line.admit' + '_' + str(i), dataserver=True)
+        p = admit.Project('molecular-line.admit' + '_' + str(i), dataserver=True)      #dataserver suppress browser session
         t0  = p.addtask(admit.Ingest_AT(file=fileName))
         t1  = p.addtask(admit.CubeStats_AT(ppp=True), [t0])
         t2  = p.addtask(admit.Moment_AT(mom0clip=2.0, numsigma=[numsigma]), [t0, t1])
