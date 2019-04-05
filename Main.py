@@ -6,8 +6,8 @@ from ResultAnalyzer import compare
 from NewParamBuilder import findAllCombinations
 
 #configs
-numsigmaRange = [3.0, 4.0]
-minchanRange = [4, 5]
+numsigmaRange = [2.0, 3.0]
+minchanRange = [1, 2]
 maxchanRange = [6, 7]
 fileName = "uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
 inputFile = "input.txt"
