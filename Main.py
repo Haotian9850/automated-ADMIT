@@ -4,6 +4,7 @@ from InputIngestor import getExpectedLineNum, getExpectedLines
 from TaskRunner import runAllProjects
 from ResultAnalyzer import compare
 from NewParamBuilder import findAllCombinations
+from LatexGenerator import generateLatex
 
 #configs
 numsigmaRange = [2.0, 3.0]
