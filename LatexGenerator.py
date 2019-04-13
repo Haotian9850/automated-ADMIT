@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import re
 def generate(frequencies, intensities, channels):
     """
     Args:
@@ -15,6 +15,33 @@ def generate(frequencies, intensities, channels):
         result.append(row)
     generateLatex(result)
     return result
+
+def prettyPrintCompound(compound):
+    """
+    Args:
+        compund: ugly compound name. Str
+    Returns:
+        a latex-compatible pretty print of the input name
+    """
+    compoundList = []
+    splitIndice = []
+    result = []
+    for i in range(0, len(compound) - 1):
+        if (compound[i].isdigit() and not compound[i + 1].isdigit()):
+            splitIndice.append(i + 1)
+        elif (not compound[i].isdigit() and compound[i + 1].isdigit()):
+            splitIndice.append(i + 1)
+    splitIndice.insert(0, 0)
+    splitIndice.insert(len(splitIndice), len(compound))
+    for i in range(0, len(splitIndice) - 1):
+        compoundList.append(compound[splitIndice[i] : splitIndice[i + 1]])
+    for element in compoundList:
+        newElement = element
+        if element.isdigit():
+            newElement = "_{" + element + "}"
+        result.append(newElement)
+    print(result)
+    
 
 def assembleRow(freq, intensity, channels):
     """
@@ -39,3 +66,5 @@ def generateLatex(rows):
     for row in rows:
         file.write(row + "\n")
     file.close()
+
+prettyPrintCompound("c17ocl2si29")
