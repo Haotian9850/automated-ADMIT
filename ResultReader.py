@@ -56,3 +56,29 @@ def parseChannels(lines):
         result.append((startChan, endChan))
     print(result)
     return result
+
+def parseCompound(lines):
+    """
+    Args:
+        lines: all information on all identified molecular lines. nested list
+    Returns:
+        list of identified elements. Str list
+    """
+    result = []
+    for line in lines:
+        compound = line["formula"]
+        result.append(compound)
+    return result
+
+def parseName(lines):
+    """
+    Args:
+        lines: all information on all identified molecular lines. nested list
+    Returns:
+        list of names of identified elements. Str list
+    """
+    result = []
+    for line in lines:
+        name = line["name"]
+        result.append(name)
+    return result

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from ResultReader import getAllLineProfile, parseChannels, parseFreq, parsePeakIntensity
+from ResultReader import getAllLineProfile, parseChannels, parseFreq, parsePeakIntensity, parseCompound, parseName
 from InputIngestor import getExpectedLineNum, getExpectedLines
 from TaskRunner import runAllProjects
 from ResultAnalyzer import compare
@@ -119,6 +119,8 @@ def run():
     """
     printResult()
     generate(parseFreq(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
+                parseCompound(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")),
+                parseName(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")),
                 parsePeakIntensity(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
                 parseChannels(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")))
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import re
-def generate(frequencies, intensities, channels):
+def generate(frequencies, compounds, names, intensities, channels):
     """
     Args:
         frequencies: frequency result from best-fit ADMIT data product. float list
@@ -11,13 +11,14 @@ def generate(frequencies, intensities, channels):
     """
     result = []
     for i in range(0, len(frequencies)):
-        row = assembleRow(frequencies[i], intensities[i], channels[i])
+        row = assembleRow(frequencies[i], compounds[i], names[i], intensities[i], channels[i])
         result.append(row)
     generateLatex(result)
     return result
 
 def prettyPrintCompound(compound):
     """
+    Linear complexity, most efficient!
     Args:
         compund: ugly compound name. Str
     Returns:
@@ -31,8 +32,10 @@ def prettyPrintCompound(compound):
             splitIndice.append(i + 1)
         elif (not compound[i].isdigit() and compound[i + 1].isdigit()):
             splitIndice.append(i + 1)
+
     splitIndice.insert(0, 0)
     splitIndice.insert(len(splitIndice), len(compound))
+
     for i in range(0, len(splitIndice) - 1):
         compoundList.append(compound[splitIndice[i] : splitIndice[i + 1]])
     for element in compoundList:
@@ -40,10 +43,10 @@ def prettyPrintCompound(compound):
         if element.isdigit():
             newElement = "_{" + element + "}"
         result.append(newElement)
-    print(result)
+    return "".join(result)
     
 
-def assembleRow(freq, intensity, channels):
+def assembleRow(freq, compound, name, intensity, channels):
     """
     Args:
         freq: frequency of a row, float
@@ -52,7 +55,7 @@ def assembleRow(freq, intensity, channels):
     Returns:
         a Latex table row as a string
     """
-    return "".join(freq) + " & " + "".join(intensity) + " & " + "".join(channels[0]) + " & " + "".join(channels[1]) + "\\" + "\\"
+    return "".join(freq) + " & " + "".join(prettyPrintCompound(compound)) + " & " + "".join(name)  + " & " + "".join(intensity) + " & " + "".join(channels[0]) + " & " + "".join(channels[1]) + "\\" + "\\"
 
 def generateLatex(rows):
     """
@@ -66,5 +69,3 @@ def generateLatex(rows):
     for row in rows:
         file.write(row + "\n")
     file.close()
-
-prettyPrintCompound("c17ocl2si29")
