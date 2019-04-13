@@ -11,6 +11,7 @@ def getExpectedLineNum(fileName):
     return lines[0]
 
 #frequency ranges of all expected molecular lines
+#NOTE: deprecated in cluster environment
 def getExpectedLines(fileName):
     result = []
     lines = readFile(fileName)
