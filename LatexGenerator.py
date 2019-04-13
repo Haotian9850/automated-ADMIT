@@ -13,6 +13,7 @@ def generate(frequencies, intensities, channels):
     for i in range(0, len(frequencies)):
         row = assembleRow(frequencies[i], intensities[i], channels[i])
         result.append(row)
+    generateLatex(result)
     return result
 
 def assembleRow(freq, intensity, channels):
@@ -24,7 +25,7 @@ def assembleRow(freq, intensity, channels):
     Returns:
         a Latex table row as a string
     """
-    return "".join(freq) + " & " + "".join(intensity) + " & " + "".join(channels[0]) + " & " + "".join(channels[1]) 
+    return "".join(freq) + " & " + "".join(intensity) + " & " + "".join(channels[0]) + " & " + "".join(channels[1]) + "\\" + "\\"
 
 def generateLatex(rows):
     """

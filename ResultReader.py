@@ -29,7 +29,7 @@ def parseFreq(lines):
     return result
 
 def parsePeakIntensity(lines):
-    """
+    """#!/usr/bin/python
     Args:
         lines: all information on all identified molecular lines (nested list)
     Returns:

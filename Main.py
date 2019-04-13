@@ -1,10 +1,10 @@
 #!/usr/bin/python
-from ResultReader import getAllLineProfile, parseChannels, parseFreq
+from ResultReader import getAllLineProfile, parseChannels, parseFreq, parsePeakIntensity
 from InputIngestor import getExpectedLineNum, getExpectedLines
 from TaskRunner import runAllProjects
 from ResultAnalyzer import compare
 from NewParamBuilder import findAllCombinations
-from LatexGenerator import generateLatex
+from LatexGenerator import generate
 
 #configs
 numsigmaRange = [2.0, 3.0]
@@ -118,6 +118,9 @@ def run():
     Master function, calls every functions to complete workflow
     """
     printResult()
+    generate(parseFreq(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
+                parsePeakIntensity(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
+                parseChannels(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")))
 
 runAllTasks()
 run()
