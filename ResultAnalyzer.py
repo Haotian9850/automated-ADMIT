@@ -9,9 +9,9 @@ def checkNumOfLines(expectedLineNum, actualLineNum):
         Ture if inputs are equal in value, False otherwise
     """
     if(expectedLineNum != actualLineNum):
-        print("Expected number of molecular lines does not match ADMIT calculation, applying soft comparison...")
+        print("Expected number of molecular lines does not match ADMIT calculation. Procced to next parameter set.")
         return False
-    print("Expected number of molecular lines matches ADMIT calculation, applying strict comparison...")
+    print("Expected number of mulecular lines matches ADMIT calculation. Proceed to further comparisons")
     return True
 
 def reduce(l):
@@ -81,4 +81,6 @@ def compare(expectedLines, actualLines):
         #soft comparison
         result = softCompare(reduce(expectedLines), reduce(actualLines))
     return result #final comparison result
+
+
 
