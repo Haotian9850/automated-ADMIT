@@ -7,10 +7,10 @@ from NewParamBuilder import findAllCombinations
 from LatexGenerator import generate
 
 #configs
-numsigmaRange = [2.0, 3.0]
-minchanRange = [1, 2]
-maxchanRange = [10, 11]
-fileName = "../data/uid___A002_Xb20b6d_X3c34__Serpens_South.C17O_3-2.pbcor.fits"
+numsigmaRange = [8.0, 9.0]
+minchanRange = [5, 6]
+maxchanRange = [24, 25]
+fileName = "../data/spw1.dirt.fits"
 inputFile = "input.txt"
 
 
@@ -118,11 +118,7 @@ def run():
     Master function, calls every functions to complete workflow
     """
     printResult()
-    generate(parseFreq(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
-                parseCompound(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")),
-                parseName(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")),
-                parsePeakIntensity(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")), 
-                parseChannels(getAllLineProfile("molecular-line.admit_0/", "lltable.4.json")))
+
 
 runAllTasks()
 run()

@@ -1,5 +1,10 @@
 #!/usr/bin/python
 import re
+from ResultReader import getAllLineProfile, parseChannels, parseCompound, parseFreq, parseName, parsePeakIntensity
+
+#(G)
+DATA_PRODUCT_FILE_NAME = "data_product_spw0.dirt/"
+
 def generate(frequencies, compounds, names, intensities, channels):
     """
     Args:
@@ -20,10 +25,14 @@ def prettyPrintCompound(compound):
     """
     Linear complexity, most efficient!
     Args:
-        compund: ugly compound name. Str
+        compound: ugly compound name. Str
     Returns:
         a latex-compatible pretty print of the input name
     """
+    # unable to identify
+    if compound[0] == 'U':
+        return "null"
+
     compoundList = []
     splitIndice = []
     result = []
@@ -55,7 +64,7 @@ def assembleRow(freq, compound, name, intensity, channels):
     Returns:
         a Latex table row as a string
     """
-    return "".join(freq) + " & " + "".join(prettyPrintCompound(compound)) + " & " + "".join(name)  + " & " + "".join(intensity) + " & " + "".join(channels[0]) + " & " + "".join(channels[1]) + "\\" + "\\"
+    return  "$" + "".join(str(round(float(freq), 6))) + "$" + " & " + "$" + "".join(prettyPrintCompound(compound)) + "$" + " & " + "".join(name)  + " & " + "$" + "".join(str(round(float(intensity), 6))) + "$" + "&" + "$" + "".join(channels[0]) + "$" + " & " + "$" + "".join(channels[1]) + "$" + "\\" + "\\"
 
 def generateLatex(rows):
     """
@@ -69,3 +78,10 @@ def generateLatex(rows):
     for row in rows:
         file.write(row + "\n")
     file.close()
+
+generate(parseFreq(getAllLineProfile(DATA_PRODUCT_FILE_NAME, "lltable.4.json")), 
+        parseCompound(getAllLineProfile(DATA_PRODUCT_FILE_NAME, "lltable.4.json")),
+        parseName(getAllLineProfile(DATA_PRODUCT_FILE_NAME, "lltable.4.json")),
+        parsePeakIntensity(getAllLineProfile(DATA_PRODUCT_FILE_NAME, "lltable.4.json")), 
+        parseChannels(getAllLineProfile(DATA_PRODUCT_FILE_NAME, "lltable.4.json")))
+
